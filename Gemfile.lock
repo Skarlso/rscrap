@@ -23,6 +23,7 @@ GEM
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     pkg-config (1.1.7)
+    sqlite3 (1.3.11)
     telegram-bot-ruby (0.5.3)
       faraday
       virtus
@@ -41,6 +42,7 @@ PLATFORMS
 DEPENDENCIES
   jsonpathv2
   nokogiri
+  sqlite3
   telegram-bot-ruby
   whenever
 
