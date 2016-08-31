@@ -1,5 +1,4 @@
 require_relative '../helper'
-require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 

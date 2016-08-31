@@ -1,8 +1,6 @@
 require_relative '../helper'
-require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
-require 'sqlite3'
 
 help = Helper.new
 
