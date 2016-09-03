@@ -60,7 +60,7 @@ class Helper
     id = File.open('user_id', 'rb', &:read).chop
     to_send = []
     posts.each do |k, v|
-      to_send << "New Post: #{k} => #{v}"
+      to_send << "New Post: #{k} => #{v.join("\n")}"
     end
     message = to_send.join("\n")
     raise 'No new posts.' if message.empty?
