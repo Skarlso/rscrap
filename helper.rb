@@ -60,10 +60,10 @@ class Helper
     id = File.open('user_id', 'rb', &:read).chop
     to_send = []
     posts.each do |k, v|
-      to_send << "New Post: #{k} => #{v.join("\n")}"
+      to_send << "\nNew Post: #{k} => #{v.join("\n")}\n----------------"
     end
     message = to_send.join("\n")
-    raise 'No new posts.' if message.empty?
+    return if message.empty?
     Telegram::Bot::Client.run(token) do |bot|
       bot.api.send_message(chat_id: id, text: message)
     end

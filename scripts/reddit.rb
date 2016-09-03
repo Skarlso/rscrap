@@ -4,27 +4,28 @@ require 'open-uri'
 require 'json'
 
 help = Helper.new
-to_scrap = { golang: 'https://www.reddit.com/r/golang/new.json',
-             ruby: 'https://www.reddit.com/r/ruby/new.json',
-             php: 'https://www.reddit.com/r/php/new.json',
-             aws: 'https://www.reddit.com/r/aws/new.json',
-             docker: 'https://www.reddit.com/r/docker/new.json',
-             devops: 'https://www.reddit.com/r/devops/new.json',
-             bash: 'https://www.reddit.com/r/bash/new.json' }
+to_scrap = { golang: 'https://www.reddit.com/r/golang/new.json?limit=10',
+             ruby: 'https://www.reddit.com/r/ruby/new.json?limit=10',
+             php: 'https://www.reddit.com/r/php/new.json?limit=10',
+             aws: 'https://www.reddit.com/r/aws/new.json?limit=10',
+             docker: 'https://www.reddit.com/r/docker/new.json?limit=10',
+             devops: 'https://www.reddit.com/r/devops/new.json?limit=10',
+             bash: 'https://www.reddit.com/r/bash/new.json?limit=10' }
 
 posts = {}
-
-last = help.last_record(:golang)
-last_record = last.nil? ? 0 : last.first
-content = open(to_scrap[:golang], 'User-Agent' => "RScrappy/#{RUBY_VERSION}").read
-JsonPath.new('$.data.children').on(content).first.each do |o|
-  new_id = JsonPath.on(o, '$.data.id').first
-  new_timestamp = JsonPath.on(o, '$.data.created').first.to_i
-  new_title = JsonPath.on(o, '$.data.title').first
-  next if new_timestamp <= last_record
-  posts[:golang] = [] unless posts.key? :golang
-  posts[:golang] << new_title
-  help.insert_reddit(:golang, new_id, new_timestamp)
+to_scrap.each do |k, v|
+  last = help.last_record(k)
+  last_record = last.nil? ? 0 : last.first
+  content = open(v, 'User-Agent' => "RScrappy/#{RUBY_VERSION}").read
+  JsonPath.new('$.data.children').on(content).first.each do |o|
+    new_id = JsonPath.on(o, '$.data.id').first
+    new_timestamp = JsonPath.on(o, '$.data.created').first.to_i
+    new_title = JsonPath.on(o, '$.data.title').first
+    next if new_timestamp <= last_record
+    posts[k] = [] unless posts.key? k
+    posts[k] << new_title
+    help.insert_reddit(k, new_id, new_timestamp)
+  end
 end
 
 help.send_posts(posts)
