@@ -1,9 +1,9 @@
-require_relative '../helper'
+require_relative '../rscrap'
 require 'jsonpathv2'
 require 'open-uri'
 require 'json'
 
-help = Helper.new
+scrap = Rscrap.new
 to_scrap = { golang: 'https://www.reddit.com/r/golang/new.json?limit=10',
              ruby: 'https://www.reddit.com/r/ruby/new.json?limit=10',
              php: 'https://www.reddit.com/r/php/new.json?limit=10',
@@ -14,7 +14,7 @@ to_scrap = { golang: 'https://www.reddit.com/r/golang/new.json?limit=10',
 
 posts = {}
 to_scrap.each do |k, v|
-  last = help.last_record(k)
+  last = scrap.last_record(k)
   last_record = last.nil? ? 0 : last.first
   content = open(v, 'User-Agent' => "RScrappy/#{RUBY_VERSION}").read
   JsonPath.new('$.data.children').on(content).first.each do |o|
@@ -24,8 +24,8 @@ to_scrap.each do |k, v|
     next if new_timestamp <= last_record
     posts[k] = [] unless posts.key? k
     posts[k] << new_title
-    help.insert_reddit(k, new_id, new_timestamp)
+    scrap.insert_reddit(k, new_id, new_timestamp)
   end
 end
 
-help.send_posts(posts)
+scrap.send_posts(posts)
