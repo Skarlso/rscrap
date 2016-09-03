@@ -43,16 +43,29 @@ class Helper
     send_message("Got you a new Commitstrip Comic: #{new_comic}")
   end
 
-  def update_reddit(subreddit, id)
-    execute("update websites set postid=\"#{id}\" where subreddit=\"#{subreddit}\";")
+  def insert_reddit(subreddit, id, stamp)
+    execute("insert into reddits values(\"#{subreddit}\", \"#{id}\", #{stamp});")
   end
 
-  def insert_reddit(subreddit, id)
-    execute("insert into reddits values(\"#{subreddit}\", \"#{id}\");")
+  def last_record(subreddit)
+    last_record = execute <<-SQL
+                            SELECT stamp FROM reddits WHERE subreddit=\"#{subreddit}\" AND stamp =
+                            (SELECT MAX(stamp) FROM reddits);
+                          SQL
+    last_record.first unless last_record.nil?
   end
 
-  def fetch_reddit(subreddit)
-    old_post_id = execute("SELECT postid FROM reddits WHERE subreddit=\"#{subreddit}\";")
-    old_post_id.first.first unless old_post_id.empty?
+  def send_posts(posts)
+    token = File.open('token', 'rb', &:read).chop
+    id = File.open('user_id', 'rb', &:read).chop
+    to_send = []
+    posts.each do |k, v|
+      to_send << "New Post: #{k} => #{v}"
+    end
+    message = to_send.join("\n")
+    raise 'No new posts.' if message.empty?
+    Telegram::Bot::Client.run(token) do |bot|
+      bot.api.send_message(chat_id: id, text: message)
+    end
   end
 end
