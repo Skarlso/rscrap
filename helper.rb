@@ -11,8 +11,8 @@ class Helper
   end
 
   def send_message(text)
-    token = File.open('token', 'rb', &:read).chop
-    id = File.open('user_id', 'rb', &:read).chop
+    token = ENV.fetch('RSCRAP_TOKEN', '')
+    id = ENV.fetch('RSCRAP_USER_ID', '')
 
     Telegram::Bot::Client.run(token) do |bot|
       bot.api.send_message(chat_id: id, text: text)
