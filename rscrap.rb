@@ -49,7 +49,7 @@ class Rscrap
   def last_record(subreddit)
     last_record = execute <<-SQL
                             SELECT stamp FROM reddits WHERE subreddit=\"#{subreddit}\" AND stamp =
-                            (SELECT MAX(stamp) FROM reddits);
+                            (SELECT MAX(stamp) FROM reddits WHERE subreddit=\"#{subreddit}\");
                           SQL
     last_record.first unless last_record.nil?
   end
