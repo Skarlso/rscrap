@@ -15,7 +15,7 @@ to_scrap = { golang: 'https://www.reddit.com/r/golang/new.json?limit=10',
 posts = {}
 to_scrap.each do |k, v|
   last = scrap.last_record(k)
-  last_record = last.nil? ? 0 : last.first
+  last_record = last.nil? ? 0 : last.first.to_i
   content = open(v, 'User-Agent' => "RScrappy/#{RUBY_VERSION}").read
   JsonPath.new('$.data.children').on(content).first.each do |o|
     new_id = JsonPath.on(o, '$.data.id').first
