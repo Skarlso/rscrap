@@ -4,6 +4,8 @@ require 'sqlite3'
 class Rscrap
   def initialize
     @db = SQLite3::Database.new 'rscrap.db'
+    @token = ENV.fetch('RSCRAP_TOKEN', '')
+    @id = ENV.fetch('RSCRAP_USER_ID', '')
   end
 
   def execute(statement)
@@ -11,11 +13,8 @@ class Rscrap
   end
 
   def send_message(text)
-    token = ENV.fetch('RSCRAP_TOKEN', '')
-    id = ENV.fetch('RSCRAP_USER_ID', '')
-
-    Telegram::Bot::Client.run(token) do |bot|
-      bot.api.send_message(chat_id: id, text: text)
+    Telegram::Bot::Client.run(@token) do |bot|
+      bot.api.send_message(chat_id: @id, text: text)
     end
   end
 
@@ -56,16 +55,14 @@ class Rscrap
   end
 
   def send_posts(posts)
-    token = File.open('token', 'rb', &:read).chop
-    id = File.open('user_id', 'rb', &:read).chop
     to_send = []
     posts.each do |k, v|
       to_send << "\nNew Post: #{k} => #{v.join("\n")}\n----------------"
     end
     message = to_send.join("\n")
     return if message.empty?
-    Telegram::Bot::Client.run(token) do |bot|
-      bot.api.send_message(chat_id: id, text: message)
+    Telegram::Bot::Client.run(@token) do |bot|
+      bot.api.send_message(chat_id: @id, text: message)
     end
   end
 end
