@@ -23,6 +23,7 @@ GEM
       pkg-config (~> 1.1.7)
     pkg-config (1.1.7)
     sqlite3 (1.3.11)
+    telegram (0.0.1)
     telegram-bot-ruby (0.5.3)
       faraday
       virtus
@@ -40,6 +41,7 @@ DEPENDENCIES
   jsonpathv2
   nokogiri
   sqlite3
+  telegram
   telegram-bot-ruby
 
 BUNDLED WITH
