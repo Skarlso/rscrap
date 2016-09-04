@@ -5,7 +5,6 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    chronic (0.10.2)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     descendants_tracker (0.0.4)
@@ -33,8 +32,6 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
-    whenever (0.9.7)
-      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -44,7 +41,6 @@ DEPENDENCIES
   nokogiri
   sqlite3
   telegram-bot-ruby
-  whenever
 
 BUNDLED WITH
    1.12.5
