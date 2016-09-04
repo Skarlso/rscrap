@@ -25,7 +25,7 @@ crontab -e
 And add this line:
 
 ```bash
-45 * * * * /home/hannibal/.rvm/gems/ruby-2.3.1@main_gems/bin/bundle exec ruby -C /home/hannibal/rubyproj/rscrap/ scripts/reddit.rb >> cron_reddit.log
+45 * * * * /home/<user>/.rvm/gems/ruby-2.3.1@main_gems/bin/bundle exec ruby -C /home/<user>/rubyproj/rscrap/ scripts/reddit.rb >> cron_reddit.log
 ```
 
 For reddit, I'd recommend a 45 minute refresh rate based on how many subreddits you are following. You don't want to spam yourself too much. And the bot does handle bulk updates.
@@ -40,4 +40,4 @@ After the scrip runs you should see something like this from your bot:
 
 # Contribute
 
-Contributions, issues, and PRs are very welcomed. 
+Contributions, issues, and PRs are very welcomed.
