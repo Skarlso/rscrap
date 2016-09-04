@@ -39,7 +39,7 @@ class Rscrap
   def send_new_comic(url, new_comic)
     old_comic = old_comic_id(url)
     save_comic_id(url, old_comic, new_comic)
-    send_message("Got you a new Commitstrip Comic: #{new_comic}")
+    send_message("Got you a new comic: #{new_comic}")
   end
 
   def insert_reddit(subreddit, id, stamp)
