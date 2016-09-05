@@ -4,8 +4,14 @@ require 'sqlite3'
 class Rscrap
   def initialize
     @db = SQLite3::Database.new 'rscrap.db'
-    @token = ENV.fetch('RSCRAP_TOKEN', '')
-    @id = ENV.fetch('RSCRAP_USER_ID', '')
+    @token = fetch_variable('RSCRAP_TOKEN')
+    @id = fetch_variable('RSCRAP_USER_ID')
+  end
+
+  def fetch_variable(var)
+    variable = ENV.fetch(var, '')
+    raise "Please setup the environment property '#{var}'." if variable.empty?
+    variable
   end
 
   def execute(statement)
