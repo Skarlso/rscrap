@@ -1,5 +1,6 @@
 require 'telegram/bot'
 require 'sqlite3'
+require 'bitly'
 
 class Rscrap
   def initialize
@@ -70,5 +71,15 @@ class Rscrap
     Telegram::Bot::Client.run(@token) do |bot|
       bot.api.send_message(chat_id: @id, text: message)
     end
+  end
+
+  def bitly_enabled?
+    ENV.key?('RSCRAP_BITLY_USERNAME')
+  end
+
+  def shorten_url(url)
+    Bitly.use_api_version_3
+    bitly = Bitly.new(ENV['RSCRAP_BITLY_USERNAME'], ENV['RSCRAP_BITLY_API_KEY'])
+    bitly.shorten(url).short_url
   end
 end

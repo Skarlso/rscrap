@@ -30,6 +30,19 @@ And add this line:
 
 For reddit, I'd recommend a 45 minute refresh rate based on how many subreddits you are following. You don't want to spam yourself too much. And the bot does handle bulk updates.
 
+# URL Shortening option for reddit urls
+
+RScrap now supports URL shortening using [bit.ly](https://bit.ly). Just set up these two environment properties:
+
+```bash
+export RSCRAP_BITLY_USERNAME=username
+export RSCRAP_BITLY_API_KEY=api_key
+```
+
+This is how it looks like with shortened URLS:
+
+![shorten](shorten.png)
+
 # Example
 
 After the scrip runs you should see something like this from your bot:
