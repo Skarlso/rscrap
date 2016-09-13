@@ -2,6 +2,7 @@ require 'telegram/bot'
 require 'sqlite3'
 require 'bitly'
 
+# Rscrap is the main class which handles most of the functionality for the cron scripts.
 class Rscrap
   def initialize
     @db = SQLite3::Database.new 'rscrap.db'
@@ -26,13 +27,13 @@ class Rscrap
   end
 
   def save_comic_id(url, old_comic, new_comic)
-    case
-    when old_comic.nil?, old_comic.empty?
+    case old_comic
+    when nil?, empty?
       statement = "insert into websites values(\"#{url}\", \"#{new_comic}\");"
-    when new_comic != old_comic
-      statement = "update websites set id=\"#{new_comic}\" where url=\"#{url}\";"
-    when new_comic == old_comic
+    when new_comic
       raise 'No new comic. Quitting.'
+    else
+      statement = "update websites set id=\"#{new_comic}\" where url=\"#{url}\";"
     end
 
     execute(statement)
