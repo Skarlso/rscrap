@@ -35,7 +35,6 @@ class Rscrap
     else
       statement = "update websites set id=\"#{new_comic}\" where url=\"#{url}\";"
     end
-
     execute(statement)
   end
 
