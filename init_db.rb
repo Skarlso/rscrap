@@ -1,22 +1,25 @@
 require 'sqlite3'
+# Initializes the database. The format to use if there are more tables
+# is simple. Just create a SQL file corresponding to the table name
+# and add that table to the @tables instance variable.
+class InitDb
+  def initialize
+    @db = SQLite3::Database.new 'rscrap.db'
+    @tables = %w(reddits websites)
+  end
 
-raise 'Database already initialized.' if File.exist?('rscrap.db')
+  def table_exists?(table)
+    retrieved = @db.execute <<-SQL
+      SELECT name FROM sqlite_master WHERE type='table' AND name='#{table}';
+    SQL
+    retrieved.first.first == table unless retrieved.nil? || retrieved.empty?
+  end
 
-db = SQLite3::Database.new 'rscrap.db'
+  def init_db
+    @tables.each do |table|
+      @db.execute File.open("#{table}.sql", 'rb', &:read).chop unless table_exists? table
+    end
+  end
+end
 
-db.execute <<-SQL
-  create table websites (
-    url varchar(100),
-    id varchar(100),
-    PRIMARY KEY (url)
-  );
-SQL
-
-db.execute <<-SQL
-  create table reddits (
-    subreddit varchar(100),
-    postid varchar(100),
-    stamp integer,
-    PRIMARY KEY (postid)
-  );
-SQL
+InitDb.new.init_db
