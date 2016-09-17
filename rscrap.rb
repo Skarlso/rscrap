@@ -28,7 +28,7 @@ class Rscrap
 
   def save_comic_id(url, old_comic, new_comic)
     case old_comic
-    when nil?, empty?
+    when nil, []
       statement = "insert into websites values(\"#{url}\", \"#{new_comic}\");"
     when new_comic
       raise 'No new comic. Quitting.'
