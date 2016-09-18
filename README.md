@@ -2,7 +2,7 @@
 
 Ruby Web Scraper [Telegram](https://telegram.org/) Bot.
 
-# Setup
+# Setup
 
 First, you need to obtain a Telegram Bot token, by following this guide: [Telegram Bot How-To](https://core.telegram.org/bots).
 
