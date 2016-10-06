@@ -58,7 +58,7 @@ class Rscrap
                             SELECT stamp FROM reddits WHERE subreddit=\"#{subreddit}\" AND stamp =
                             (SELECT MAX(stamp) FROM reddits WHERE subreddit=\"#{subreddit}\");
                           SQL
-    last_record.first unless last_record.nil?
+    last_record&.first
   end
 
   def send_posts(posts)
@@ -68,9 +68,7 @@ class Rscrap
     end
     message = to_send.join("\n")
     return if message.empty?
-    Telegram::Bot::Client.run(@token) do |bot|
-      bot.api.send_message(chat_id: @id, text: message)
-    end
+    send_message(message)
   end
 
   def bitly_enabled?
