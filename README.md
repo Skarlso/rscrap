@@ -28,7 +28,7 @@ And add this line:
 0,45 * * * * /bin/bash -l -c 'cd /home/<user>/rubyproj/rscrap && bundle exec ruby scripts/reddit.rb'
 ```
 
-For reddit, I'd recommend a 45 minute refresh rate based on how many subreddits you are following. You don't want to spam yourself too much. And the bot does handle bulk updates.
+For reddit, I recommend a 45 minute refresh rate based on how many subreddits you are following. You don't want to spam yourself too much. And the bot does handle bulk updates.
 
 # URL Shortening option for reddit urls
 
