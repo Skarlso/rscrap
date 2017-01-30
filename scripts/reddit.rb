@@ -5,6 +5,7 @@ require 'json'
 
 scrap = Rscrap.new
 to_scrap = { golang: 'https://www.reddit.com/r/golang/new.json?limit=5',
+             challenges: 'https://www.reddit.com/r/dailyprogrammer/new.json?limit=5',
              ruby: 'https://www.reddit.com/r/ruby/new.json?limit=5',
              php: 'https://www.reddit.com/r/php/new.json?limit=5',
              aws: 'https://www.reddit.com/r/aws/new.json?limit=5',
