@@ -2,7 +2,7 @@ require_relative '../rscrap'
 require 'nokogiri'
 require 'open-uri'
 
-url = 'http://xkcd.com/'
+url = 'https://xkcd.com/'
 scrap = Rscrap.new
 page = Nokogiri::HTML(open(url))
 comic_id = page.css('div#comic').css('img')[0].select { |e| e if e[0] == 'src' }[0][1]
