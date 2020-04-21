@@ -1,0 +1,260 @@
+=== Ongoing
+
+...
+
+=== 2.0.0 / 2020-03-12
+
+* Complete overhaul of the gem
+* Supports version 4 of the Bitly API
+* See the README and documentation for more details
+
+=== 2.0.0.beta.2 / 2020-03-02
+
+* Uses autoload to improve memory consumption
+
+=== 2.0.0.beta.1 / 2020-02-15
+
+* Complete overhaul of the gem
+* Supports version 4 of the Bitly API
+
+=== 1.1.2
+
+* 2 minor updates
+
+  * Fix for obtaining clicks for branded subdomains
+  * Some fixes for Ruby compiler warnings
+
+=== 1.1.1
+
+* 3 minor updates
+
+  * Updates shoulda/activesupport versions in dev dependencies
+  * Removes development dependency on Echoe and tidies up gemspec
+  * Adds license to gemspec
+
+=== 1.1.0 / 2016-2-25
+
+* 5 minor updates
+
+  * Fixnum & Integer unification for Ruby 2.4+ compatibility (thanks @codebender)
+  * Replaces Fakeweb with Webmock in tests
+  * Fixes instance variable warnings
+  * Fixes redefine method warnigns
+  * Always use HTTPS when using v3 API
+
+=== 1.0.2 / 2016-11-3
+
+* 1 minor update
+
+  * Stops gem breaking on Ruby < 2.2 by only installing an older version of rack.
+
+=== 1.0.1 / 2016-11-3
+
+* 1 minor update
+
+  * Properly sets the API version that is in use.
+
+=== 1.0.0 / 2016-10-21
+
+* 1 minor update
+
+  * Ensures v2 API uses https
+
+It had been too long with this gem in a pre 1.0 state. This rectifies that, even though there were no major or breaking changes.
+
+=== 0.10.4 / 2015-01-08
+
+* 1 minor update
+
+  * You can now pass a state parameter to the OAuth authorize url.
+
+=== 0.10.3 / 2014-09-22
+
+* 1 minor update
+
+  * Due to a tooling mishap, the previous gem version didn't update the OAuth2
+    gem versions. This has been updated now.
+
+=== 0.10.2 / 2014-09-20
+
+* 1 minor update
+
+  * Relaxed OAuth2 gem version to allow for version 1. Fixes issue #57.
+
+=== 0.10.1 / 2014-03-10
+
+* 1 minor update
+
+  * Stops messing with the load path. Fixes issue #45. Thanks to halloffame.
+
+=== 0.10.0 / 2014-2-23
+
+* 2 major updates
+
+  * Updates OAuth2 gem dependency to include version 0.9.x
+  * Adds support for generic OAuth2 access token in V3 API, thanks to fzagarzazu (issue #47)
+
+=== 0.9.0 / 2013-4-28
+
+* 2 major updates
+
+  * Replaces Crack with MultiJson (issue #34)
+  * Adds timeout to v3 client calls (issue #27)
+
+* 5 minor updates
+
+  * Adds qrcode_url method to Bitly::V3::Url class (issue #21)
+  * Ability to configure Bitly with a configure block (issue #16)
+  * Stops gem messing with the load path (issue #32)
+  * Adds development dependencies to Rakefile/gemspec (issue #33)
+  * Change Bitly::V3::User file to use ASCII quotes (issue #39)
+
+=== 0.8.1 / 2013-15-01
+
+* 1 major update
+
+  * bumps httparty and crack dependencies due to security vulnerability
+
+=== 0.8.0
+
+* 1 major update
+
+  * Updates OAuth2 dependency again
+
+=== 0.7.0 / 2011-1-8
+
+* 1 major bug fix
+
+  * Updates OAuth2 gem and fixes OAuth class
+
+* 1 minor enhancement
+
+  Adds link_history to user model
+
+=== 0.6.2 / 2011-11-10
+
+* 2 minor enhancements
+
+  * Adds days parameter to clicks_by_minute v3 API call
+  * Converts Readme to markdown
+
+* 2 minor bug fixes
+
+  * Increases HTTParty version to avoid issues with Rubygems
+  * Stops mutating arguments on array methods
+
+=== 0.6.1 / 2011-01-12
+
+* 1 minor enhancement
+
+  * Updated OAuth2 gem and used extra information to save login and api_key to user objects
+
+=== 0.6.0 / 2011-01-03
+
+* 1 major enhancement
+
+  * Added OAuth 2 and User calls for the version 3 API
+
+=== 0.5.5 / 2010-12-22
+
+* 1 minor bug fix
+
+  * fixed method redifined warnings
+
+=== 0.5.4 / 2010-12-01
+
+* 4 minor enhancements
+
+  * Added referrers, countries, clicks_by_minute and clicks_by_day calls to the version 3 API
+
+=== 0.5.3 / 2010-07-30
+
+* 1 minor enhancement
+
+  * Added the info call to the version 3 API
+
+=== 0.5.2 / 2010-07-18
+
+* 1 minor enhancement
+
+  * Added the lookup call to the version 3 API.
+
+=== 0.5.1 / 2010-05-26
+
+* 1 bug fix
+
+  * When expanding a short url with the v3 module, user hash and short url weren't being set properly
+
+=== 0.5.0 / 2010-05-12
+
+* Loads of major enhancements
+
+  * Support for version 3 of the bit.ly API
+  * deprecation for version 2 client object
+
+=== 0.4.0 / 2009-12-19
+
+* 1 major enhancement
+
+  * support for j.mp urls
+
+=== 0.3.2 / 2009-11-15
+
+* 1 bug fix
+
+  * called the wrong variable in case of error in the creation of a Url object
+
+=== 0.3.1 / 2009-07-29
+
+* 1 minor enhancement
+
+  * removed require 'rubygems' from library (http://gist.github.com/54177)
+
+=== 0.3 / 2009-07-09
+
+* 1 major enhancement
+
+  * a full set of tests, properly mocked
+
+* 1 minor enhancement
+
+  * calling bitly.shorten(:history => 1) will add the url to the api user's history.
+
+* 1 bug fix
+
+  * you can no longer call shorten with a keyword, this was unsupported in the API and consequently removed
+
+=== 0.2 / 2009-06-23
+
+* 1 enhancement
+
+  * Depends on Crack instead of JSON, so can run on Jruby
+
+* 1 bug fix
+
+  * Does not choke when bit.ly chokes. Returns a BitlyError instead
+
+=== 0.1.4 / 2009-04-13
+
+* 1 bug fix
+
+	* Urls with parameters were choking, changed to using CGI.
+
+=== 0.1.2 / 2009-03-12
+
+* 1 minor enhancement
+
+	* Allows to add a keyword for shortening urls
+
+=== 0.1.1 / 2009-01-26
+
+* 1 bug fix
+
+  * Didn't include dependency on JSON
+
+=== 0.1.0 / 2009-01-26
+
+* 1 major enhancement
+
+  * First release
+

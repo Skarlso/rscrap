@@ -1,0 +1,60 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
+    bitly (2.0.0)
+      oauth2 (>= 0.5.0, < 2.0)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
+    equalizer (0.0.11)
+    faraday (1.0.1)
+      multipart-post (>= 1.2, < 3)
+    ice_nine (0.11.2)
+    inflecto (0.0.2)
+    jsonpathv2 (0.0.9)
+      multi_json
+    jwt (2.2.1)
+    mini_portile2 (2.4.0)
+    multi_json (1.14.1)
+    multi_xml (0.6.0)
+    multipart-post (2.1.1)
+    nokogiri (1.10.9)
+      mini_portile2 (~> 2.4.0)
+    oauth2 (1.4.4)
+      faraday (>= 0.8, < 2.0)
+      jwt (>= 1.0, < 3.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 3)
+    rack (2.2.2)
+    sqlite3 (1.4.2)
+    telegram (0.0.1)
+    telegram-bot-ruby (0.12.0)
+      faraday
+      inflecto
+      virtus
+    thread_safe (0.3.6)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bitly
+  jsonpathv2
+  nokogiri (>= 1.10.8)
+  sqlite3
+  telegram
+  telegram-bot-ruby (>= 0.12.0)
+
+BUNDLED WITH
+   2.1.4

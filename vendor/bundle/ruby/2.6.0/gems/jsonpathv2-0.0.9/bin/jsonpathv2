@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'jsonpathv2'
+require 'multi_json'
+
+def usage
+  puts "jsonpathv2 [expression] (file|string)
+
+If you omit the second argument, it will read stdin, assuming one valid JSON
+object per line. Expression must be a valid jsonpathv2 expression."
+  exit!
+end
+
+usage unless ARGV[0]
+
+jsonpathv2 = JsonPath.new(ARGV[0])
+case ARGV[1]
+when nil # stdin
+  puts MultiJson.encode(jsonpathv2.on(MultiJson.decode(STDIN.read)))
+when String
+  puts MultiJson.encode(jsonpathv2.on(MultiJson.decode(File.exist?(ARGV[1]) ? File.read(ARGV[1]) : ARGV[1])))
+end
