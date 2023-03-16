@@ -35,7 +35,7 @@ GEM
       snaky_hash (~> 2.0)
       version_gem (~> 1.1)
     racc (1.6.0)
-    rack (3.0.4.1)
+    rack (3.0.6.1)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
