@@ -20,11 +20,11 @@ GEM
     jsonpathv2 (0.0.9)
       multi_json
     jwt (2.2.1)
-    mini_portile2 (2.8.0)
+    mini_portile2 (2.8.1)
     multi_json (1.14.1)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
-    nokogiri (1.13.6)
+    nokogiri (1.14.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     oauth2 (2.0.9)
@@ -34,7 +34,7 @@ GEM
       rack (>= 1.2, < 4)
       snaky_hash (~> 2.0)
       version_gem (~> 1.1)
-    racc (1.6.0)
+    racc (1.6.2)
     rack (3.0.6.1)
     snaky_hash (2.0.1)
       hashie
